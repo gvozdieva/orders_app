@@ -1,0 +1,22 @@
+.conteiner {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 150px;
+    height: 20px;
+    margin: 0 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    p {
+        font-size: 15pt;
+    }
+}
