@@ -1,25 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Positions from "../positions/Positions";
+import {useDispatch, useSelector} from "react-redux";
+import {getOrders} from "../actions/ordersActions";
 
 function Orders({value}) {
+    const orders = useSelector((state) => state.orders.orders)
+    const dispatch = useDispatch()
     const [isOpen, setIsOpen] = useState({})
 
-    const [orders, setOrders] = useState([])
-    useEffect(() => {
-        axios
-            .get(`http://127.0.0.1:8080/api/order?filter=${value}`)
-            .then((res) => {
-                    setOrders(res.data.map((item)=>{
-                        return {
-                            ...item,
-                            isOpen: false
-                        }
-                    }))
-                }
-            )
-            .catch(error => console.log(error))
-    }, [value])
+    const fetchData = () => {
+        dispatch(getOrders(value))
+    }
+
+
+    useEffect(fetchData, [value])
 
     const onToggle=(id)=>{
         orders.filter((item)=>{

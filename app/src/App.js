@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import s from './app.module.css'
-import Orders from './componets/orders/Orders'
+import Orders from './orders/Orders'
 
 function App() {
   const [value, setValue] = useState('')
